@@ -15,6 +15,7 @@ restore:
 
 EMX = emacs --debug-init --eval '(progn (toggle-frame-maximized) (split-window-below) (switch-to-buffer "*Messages*") (other-window 1))'
 
+# MELPA
 melpa-interactive-install:
 	$(EMX) --eval '(message "TEST: Install Devil interactively")' -l melpa/interactive-install.el
 
@@ -37,18 +38,25 @@ melpa-left-key:
 melpa-multiple-keys:
 	$(EMX) --eval '(message "TEST: Type , x , f\nTEST: Type . x\nTEST: Type , . s\nTEST: Type , ,\nTEST: Type . .\nTEST: Type , x , c\n")' -l melpa/multiple-keys.el
 
+# SRC
 src-simple:
 	$(EMX) --eval '(message "TEST: Type , x , c and exit")' -q -l src/simple.el
 
+src-left-key:
+	$(EMX) --debug-init --eval '(message "TEST: Type <left> SPC and select region")' -q -l src/left-key.el
+
 src-map-to-prefixes:
-	$(EMX) --eval '(message "TEST: Type - C-f\nTEST: Type , v\nTest: Type - ,")' -q -l src/map-to-prefixes.el
+	$(EMX) --eval '(message "TEST: Type - C-f\nTEST: Type , v\nTest: Type - ,")' -q -l src/map-to-prefixes.elp
 
-src-god-modeless:
-	$(EMX) --eval '(message "TEST: Test modeless editing with God-mode")' -q -l src/god-modeless.el
-
+# DEMOS
 demo-smiley:
 	emacs -q -l demo/smiley.el demo/example.md
 
+# GOD
+src-god-modeless:
+	$(EMX) --eval '(message "TEST: Test modeless editing with God-mode")' -q -l src/god-modeless.el
+
+# RELEASE
 release-checks:
 	cd ~/git/melpa/ && make clean && rm -rf packages/devil* working/devil/
 	cd ~/git/melpa/ && make recipes/devil

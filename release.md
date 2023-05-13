@@ -13,7 +13,7 @@ Perform the following tasks for every release:
   - Run checks:
 
     ```sh
-    make release-checks
+    (cd ~/git/metadevil && make release-checks)
     ```
 
   - Commit changes:

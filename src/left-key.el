@@ -1,4 +1,6 @@
+(add-to-list 'load-path "~/git/devil/")
 (defvar devil-key (kbd "<left>"))
 (defvar devil-special-keys '(("%k %k" . (lambda () (interactive) (devil-run-key "%k")))))
+(require 'devil)
 (global-devil-mode)
 (global-set-key (kbd "C-<left>") 'global-devil-mode)

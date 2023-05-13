@@ -1,5 +1,4 @@
 (add-to-list 'load-path "~/git/devil/")
-(defvar devil-key "<f12>")
 (require 'devil)
 (global-devil-mode)
 (global-set-key (kbd "C-,") 'global-devil-mode)
