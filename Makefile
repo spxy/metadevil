@@ -63,3 +63,37 @@ release-checks:
 	-cd ~/git/melpa/ && STABLE=t make recipes/devil
 	cd ~/git/melpa/ && make sandbox INSTALL=devil
 	cd ~/git/melpa/ && ls -l packages/ packages-stable/ sandbox/elpa/
+
+pub:
+	make live
+	REPO_DIR="$$PWD"; cd /tmp/live/ && make -f "$$REPO_DIR/Makefile" pushlive
+
+live:
+	rm -rf /tmp/live/
+	mkdir /tmp/live/
+	> /tmp/live/index.org
+	cat doc/begin.org >> /tmp/live/index.org
+	sed -n '/^Devil mode trades/,/fingertips/p' ~/git/devil/MANUAL.org >> /tmp/live/index.org
+	echo >> /tmp/live/index.org
+	echo '#+toc: headlines 6' >> /tmp/live/index.org
+	echo >> /tmp/live/index.org
+	sed -n '/^..Introduction/,$$p' ~/git/devil/MANUAL.org >> /tmp/live/index.org
+	echo >> /tmp/live/index.org
+	cat doc/end.org >> /tmp/live/index.org
+	emacs --batch --load doc/html.el
+	sed 's/\(<h[1-6] id="\)\(.*\)\(">.*\)\(<\/h[1-6]>\)/\1\2\3<a href="#\2">\4<\/a>/' \
+	  /tmp/live/index.html > /tmp/live/tmp.html
+	mv /tmp/live/tmp.html /tmp/live/index.html
+	open /tmp/live/index.html
+
+pushlive:
+	pwd | grep live$$ || false
+	git init
+	git config user.name live
+	git config user.email live@localhost
+	git remote add origin https://github.com/susam/devil
+	git checkout -b live
+	git add index.html
+	git commit -m "Publish live ($$(date -u +"%Y-%m-%d %H:%M:%S"))"
+	git log
+	git push -f origin live

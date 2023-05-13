@@ -1,0 +1,8 @@
+-----
+
+#+begin_center
+Devil Mode is free and open source software.  The source code of Devil
+Mode is available on [[https://github.com/susam/devil][GitHub]] under the terms of the [[https://github.com/susam/devil/blob/main/LICENSE.md][MIT License]].  To
+report bugs, suggest improvements, or ask questions, [[https://github.com/susam/mathb/issues][create a new
+issue]].
+#+end_center
