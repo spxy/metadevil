@@ -71,19 +71,20 @@ pub:
 live:
 	rm -rf /tmp/live/
 	mkdir /tmp/live/
-	> /tmp/live/index.org
-	cat doc/begin.org >> /tmp/live/index.org
-	sed -n '/^Devil mode trades/,/fingertips/p' ~/git/devil/MANUAL.org >> /tmp/live/index.org
-	echo >> /tmp/live/index.org
-	echo '#+toc: headlines 6' >> /tmp/live/index.org
-	echo >> /tmp/live/index.org
-	sed -n '/^..Introduction/,$$p' ~/git/devil/MANUAL.org >> /tmp/live/index.org
-	echo >> /tmp/live/index.org
-	cat doc/end.org >> /tmp/live/index.org
+	> /tmp/live/devil.org
+	cat doc/begin.org >> /tmp/live/devil.org
+	sed -n '/^Devil mode trades/,/fingertips/p' ~/git/devil/MANUAL.org >> /tmp/live/devil.org
+	echo >> /tmp/live/devil.org
+	echo '#+toc: headlines 6' >> /tmp/live/devil.org
+	echo >> /tmp/live/devil.org
+	sed -n '/^..Introduction/,$$p' ~/git/devil/MANUAL.org >> /tmp/live/devil.org
+	echo >> /tmp/live/devil.org
+	cat doc/end.org >> /tmp/live/devil.org
 	emacs --batch --load doc/html.el
 	sed 's/\(<h[1-6] id="\)\(.*\)\(">.*\)\(<\/h[1-6]>\)/\1\2\3<a href="#\2">\4<\/a>/' \
-	  /tmp/live/index.html > /tmp/live/tmp.html
-	mv /tmp/live/tmp.html /tmp/live/index.html
+	  /tmp/live/devil.html > /tmp/live/tmp.html
+	mv /tmp/live/tmp.html /tmp/live/devil.html
+	cp /tmp/live/devil.html /tmp/live/index.html
 	open /tmp/live/index.html
 
 pushlive:
@@ -94,6 +95,7 @@ pushlive:
 	git remote add origin https://github.com/susam/devil
 	git checkout -b live
 	git add index.html
+	git add devil.org
 	git commit -m "Publish live ($$(date -u +"%Y-%m-%d %H:%M:%S"))"
 	git log
 	git push -f origin live
