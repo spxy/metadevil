@@ -1,0 +1,6 @@
+(add-to-list 'load-path "~/git/devil/")
+(require 'devil)
+(global-devil-mode)
+(global-set-key (kbd "C-,") 'global-devil-mode)
+(global-set-key (kbd "C-<tab>") (lambda () (interactive) (message "You pressed C-<tab>")))
+(global-set-key (kbd "C-<backspace>") (lambda () (interactive) (message "You pressed C-<backspace>")))

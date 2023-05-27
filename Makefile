@@ -46,7 +46,10 @@ src-left-key:
 	$(EMX) --debug-init --eval '(message "TEST: Type <left> SPC and select region")' -q -l src/left-key.el
 
 src-map-to-prefixes:
-	$(EMX) --eval '(message "TEST: Type - C-f\nTEST: Type , v\nTest: Type - ,")' -q -l src/map-to-prefixes.elp
+	$(EMX) --eval '(message "TEST: Type - C-f\nTEST: Type , v\nTest: Type - ,")' -q -l src/map-to-prefixes.el
+
+src-ctrl-function:
+	$(EMX) --eval '(message "TEST: Type , <tab> and , <backspace>")' -q -l src/ctrl-function.el
 
 # DEMOS
 demo-smiley:
