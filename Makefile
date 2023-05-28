@@ -25,25 +25,18 @@ melpa-automatic-install:
 melpa-simple:
 	$(EMX) --eval '(message "TEST: Type , x , c and exit")' -l melpa/simple.el
 
-melpa-local:
-	printf 'foo\nbar\nbaz\nqux\n' > /tmp/foo.txt
-	$(EMX) --eval '(message "TEST: Type , n\nTEST: Type , p\nTest , x , c")' -l melpa/local.el /tmp/foo.txt
-
-melpa-smiley:
-	$(EMX) --eval '(message "TEST: Type , x , c and exit")' -l melpa/smiley.el
-
-melpa-left-key:
-	$(EMX) --eval '(message "TEST: Type <left> SPC and select region")' -l melpa/left-key.el
-
-melpa-multiple-keys:
-	$(EMX) --eval '(message "TEST: Type , x , f\nTEST: Type . x\nTEST: Type , . s\nTEST: Type , ,\nTEST: Type . .\nTEST: Type , x , c\n")' -l melpa/multiple-keys.el
-
 # SRC
 src-simple:
 	$(EMX) --eval '(message "TEST: Type , x , c and exit")' -q -l src/simple.el
 
+src-semicolon:
+	$(EMX) --debug-init --eval '(message "TEST: Type ; x ; f and ; x ; c")' -q -l src/semicolon.el
+
 src-left-key:
 	$(EMX) --debug-init --eval '(message "TEST: Type <left> SPC and select region")' -q -l src/left-key.el
+
+src-multiple-keys:
+	$(EMX) --debug-init --eval '(message "TEST: Type , x , f\nTEST: Type . x\nTEST: Type , . s\nTEST: Type , ,\nTEST: Type . .\nTEST: Type , x , c\n")' -q -l src/multiple-keys.el
 
 src-map-to-prefixes:
 	$(EMX) --eval '(message "TEST: Type - C-f\nTEST: Type , v\nTest: Type - ,")' -q -l src/map-to-prefixes.el

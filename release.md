@@ -8,8 +8,8 @@ Perform the following tasks for every release:
 
   - Update version in devil.el.
   - Update copyright notice in devil.el.
-  - Update copyright notice in LICENSE.md.
-  - Update CHANGES.md.
+  - Update copyright notice in LICENSE.org.
+  - Update CHANGES.org.
   - Run checks:
 
     ```sh
