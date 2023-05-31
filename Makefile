@@ -60,38 +60,32 @@ release-checks:
 	cd ~/git/melpa/ && make sandbox INSTALL=devil
 	cd ~/git/melpa/ && ls -l packages/ packages-stable/ sandbox/elpa/
 
-pub:
-	make live
-	REPO_DIR="$$PWD"; cd /tmp/live/ && make -f "$$REPO_DIR/Makefile" pushlive
+pub: html pdf
+	cd _live/ && make -f ../Makefile pushlive
 
-live:
-	rm -rf /tmp/live/
-	mkdir /tmp/live/
-	> /tmp/live/devil.org
-	cat doc/begin.org >> /tmp/live/devil.org
-	sed -n '/^Devil mode trades/,/fingertips/p' ~/git/devil/MANUAL.org >> /tmp/live/devil.org
-	echo >> /tmp/live/devil.org
-	echo '#+toc: headlines 6' >> /tmp/live/devil.org
-	echo >> /tmp/live/devil.org
-	sed -n '/^..Introduction/,$$p' ~/git/devil/MANUAL.org >> /tmp/live/devil.org
-	echo >> /tmp/live/devil.org
-	cat doc/end.org >> /tmp/live/devil.org
-	emacs --batch --load doc/html.el
-	sed 's/\(<h[1-6] id="\)\(.*\)\(">.*\)\(<\/h[1-6]>\)/\1\2\3<a href="#\2">\4<\/a>/' \
-	  /tmp/live/devil.html > /tmp/live/tmp.html
-	mv /tmp/live/tmp.html /tmp/live/devil.html
-	cp /tmp/live/devil.html /tmp/live/index.html
-	open /tmp/live/index.html
+rm-live:
+	rm -rf _live/
+
+html: rm-live
+	emacs --batch -l doc/lib.el -l doc/html.el
+	open _live/devil.html
+
+pdf: rm-live
+	emacs --batch -l doc/lib.el -l doc/tex.el
+	cd _live/ && pdflatex devil.tex
+	cd _live/ && pdflatex devil.tex
+	rm _live/*.aux _live/*.log _live/*.out
+	open _live/devil.pdf
 
 pushlive:
-	pwd | grep live$$ || false
+	pwd | grep _live$$ || false
 	git init
 	git config user.name live
 	git config user.email live@localhost
 	git remote add origin https://github.com/susam/devil
 	git checkout -b live
-	git add index.html
-	git add devil.org
+	git add devil.html devil.pdf
+	git mv devil.html index.html
 	git commit -m "Publish live ($$(date -u +"%Y-%m-%d %H:%M:%S"))"
 	git log
 	git push -f origin live

@@ -1,9 +1,0 @@
------
-
-#+begin_center
-[[https://melpa.org/#/devil][MELPA]]
-[[https://github.com/susam/devil][GitHub]]
-[[https://github.com/susam/devil/blob/main/LICENSE.org][License]]
-[[https://github.com/susam/devil/issues][Issues]]
-[[https://mastodon.social/@susam][Mastodon]]
-#+end_center
