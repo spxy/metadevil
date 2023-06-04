@@ -17,32 +17,38 @@ EMX = emacs --debug-init --eval '(progn (toggle-frame-maximized) (split-window-b
 
 # MELPA
 melpa-interactive-install:
-	$(EMX) --eval '(message "TEST: Install Devil interactively")' -l melpa/interactive-install.el
+	$(EMX) --eval '(message "Install Devil interactively")' -l melpa/interactive-install.el
 
 melpa-automatic-install:
-	$(EMX) --eval '(message "TEST: Type , x , c and exit")' -l melpa/automatic-install.el
+	$(EMX) --eval '(message "Type , x , c and exit")' -l melpa/automatic-install.el
 
 melpa-simple:
-	$(EMX) --eval '(message "TEST: Type , x , c and exit")' -l melpa/simple.el
+	$(EMX) --eval '(message "Type , x , c and exit")' -l melpa/simple.el
 
 # SRC
-src-simple:
-	$(EMX) --eval '(message "TEST: Type , x , c and exit")' -q -l src/simple.el
-
-src-semicolon:
-	$(EMX) --debug-init --eval '(message "TEST: Type ; x ; f and ; x ; c")' -q -l src/semicolon.el
+src-ctrl-function:
+	$(EMX) -q -l src/ctrl-function.el
 
 src-left-key:
-	$(EMX) --debug-init --eval '(message "TEST: Type <left> SPC and select region")' -q -l src/left-key.el
-
-src-multiple-keys:
-	$(EMX) --debug-init --eval '(message "TEST: Type , x , f\nTEST: Type . x\nTEST: Type , . s\nTEST: Type , ,\nTEST: Type . .\nTEST: Type , x , c\n")' -q -l src/multiple-keys.el
+	$(EMX) -q -l src/left-key.el
 
 src-map-to-prefixes:
-	$(EMX) --eval '(message "TEST: Type - C-f\nTEST: Type , v\nTest: Type - ,")' -q -l src/map-to-prefixes.el
+	$(EMX) -q -l src/map-to-prefixes.el
 
-src-ctrl-function:
-	$(EMX) --eval '(message "TEST: Type , <tab> and , <backspace>")' -q -l src/ctrl-function.el
+src-multiple-keys:
+	$(EMX) -q -l src/multiple-keys.el
+
+src-non-insert-comma:
+	$(EMX) -q -l src/non-insert-comma.el
+
+src-reclaim-comma-space:
+	$(EMX) -q -l src/reclaim-comma-space.el
+
+src-semicolon:
+	$(EMX) -q -l src/semicolon.el
+
+src-simple:
+	$(EMX) -q -l src/simple.el
 
 # DEMOS
 demo-smiley:
@@ -50,7 +56,7 @@ demo-smiley:
 
 # GOD
 src-god-modeless:
-	$(EMX) --eval '(message "TEST: Test modeless editing with God-mode")' -q -l src/god-modeless.el
+	$(EMX) --eval '(message "Test modeless editing with God-mode")' -q -l src/god-modeless.el
 
 # RELEASE
 release-checks:
