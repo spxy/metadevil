@@ -3,8 +3,9 @@
 (message "Type , . s")
 (message "Type , ,")
 (message "Type . .")
-(message "Type , z ,")
-(message "Type . z .")
+(message "Type , z SPC and , p p p")
+(message "Type , g")
+(message "Type . z f")
 (message "Type , h , k and . z .")
 (message "Type , x , c")
 

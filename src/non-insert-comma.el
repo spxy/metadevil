@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/git/devil/")
 (message "Type , ,")
+(message "Type , ,")
 (message "Type , SPC")
 (message "Type , RET")
 
