@@ -13,7 +13,7 @@ restore:
 	mv ~/bkp.emacs.d/ ~/.emacs.d/ || true
 	mv ~/bkp.emacs ~/.emacs || true
 
-EMX = emacs --debug-init --eval '(progn (toggle-frame-maximized) (split-window-below) (switch-to-buffer "*Messages*") (other-window 1))'
+EMX = emacs --debug-init --eval '(progn (toggle-frame-maximized) (load-theme (quote wombat)) (split-window-below) (switch-to-buffer "*Messages*") (other-window 1))'
 
 # MELPA
 melpa-interactive-install:
@@ -49,6 +49,9 @@ src-semicolon:
 
 src-simple:
 	$(EMX) -q -l src/simple.el
+
+src-v5-keys:
+	$(EMX) -q -l src/v5-keys.el
 
 # DEMOS
 demo-smiley:

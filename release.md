@@ -6,9 +6,9 @@ Release Checklist
 
 Perform the following tasks for every release:
 
-  - Update version in devil.el.
-  - Update copyright notice in devil.el.
-  - Update copyright notice in LICENSE.org.
+  - Update version in devil.el (two places).
+  - Update copyright notice in devil.el (in a new year only).
+  - Update copyright notice in LICENSE.org (in a new year only).
   - Update CHANGES.org.
   - Run checks:
 

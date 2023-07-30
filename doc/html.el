@@ -168,7 +168,7 @@ hr {
 (insert-after "Susam Pal\n" (concat "#+date: " (get-date) "\n"))
 
 ;; TOC.
-(insert-after "fingertips.\n\n" "#+toc: headlines 6\n\n")
+(insert-after "fingertips!\n\n" "#+toc: headlines 6\n\n")
 
 ;; Postamble.
 (goto-char (point-max))
